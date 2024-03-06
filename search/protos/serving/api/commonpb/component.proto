@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+package componentpb;
+
+option go_package = "Presto.Sonata/search/protos/serving/api/commonpb;commonpb";
+
+message ApiSearchScreenAction {
+  string type = 1; // searchScreen
+  string url = 2;
+  string title = 3;
+  string query = 4;
+}
+
+message ApiSearchButton {
+  string title = 1;
+  ApiSearchScreenAction action = 2;
+}
+
+message ApiSearchScreenHeader {
+  string type = 1; // value is search
+  string title = 2;
+  string placeholder = 3;
+  string query = 4;
+  ApiSearchScreenAction action = 5;
+  ApiSearchButton button = 6;
+}
+
+message ApiButton {
+  string id = 1;
+  string subtype = 2; // ApiButtonSubtypes
+  string icon = 3; // ApiButtonIcons
+  string title = 4;
+  repeated string downloadableTracks = 5;
+  ApiAction action = 6;
+}
+
+message ApiUserComponentsAction {
+  string type = 1; // user-components
+  string url = 2;
+}
+
+message SearchScreenSectionHeading {
+  string title = 1;
+}
+
+message ApiImage {
+  string url = 1;
+  string lowresUrl = 2;
+}
+
+message ActionHeader {
+  string type = 1; // recording
+  string title = 2;
+  string subtitle = 3;
+  string composerName = 4;
+  ApiAction composerAction = 5;
+  ApiImage image = 6;
+  string startYear = 7;
+  string endYear = 8;
+  string year = 9;
+  string artists = 10;
+  string workTitle = 11;
+  string composer = 12;
+  string albumId = 13;
+  bool isFilterSelected = 14;
+}
+
+message PlayParams {
+  string id = 1;
+  string kind = 2;
+}
+
+message ApiAction {
+  string type = 1; // componentScreen, play-context
+  string screenType = 2; // album, work, recording
+  string url = 3;
+  string title = 4;
+  ActionHeader header = 5;
+  bool offline = 6;
+  string tracksMetadataUrl = 7;
+  int32 startIndex = 8;
+  repeated PlayParams playParams = 9;
+  string placeholder = 10;
+}
+
+// this is a combination of all entity types
+message SearchScreenSectionComponentItem {
+  string type = 1; // work, album, track, plain
+  string title = 2;
+  ApiImage image = 3;
+  bool inFavorites = 4;
+  bool inLibrary = 5;
+  string rowSize = 6;
+  ApiAction action = 7;
+
+  // for composers
+  string composerName = 8;
+  string opusAndAltTitle = 9;
+  string recordingsNumber = 10;
+
+  // for album
+  string style = 11; // table
+  string subtitle = 12;
+  string artist = 13;
+
+  // for track
+  string durationMs = 14;
+  string id = 15;
+
+  repeated ActionHeader moreButtons = 16;
+
+
+
+}
+message SearchScreenSectionComponent {
+  string type = 1; // list
+  repeated SearchScreenSectionComponentItem items = 2;
+}
+
+message SearchScreenSection {
+  string type = 1;
+  string priority = 2;
+  SearchScreenSectionHeading heading = 3;
+  repeated SearchScreenSectionComponent components = 4;
+
+}
+message ApiSearchComponentScreen {
+  string title = 1;
+  string placeholder = 2;
+  ApiSearchScreenHeader header = 3;
+  ApiButton primaryButton = 4;
+  ApiButton secondaryButton = 5;
+  repeated string entireTracklistMd5s = 6;
+  string screenType = 7; // ApiScreenType
+  string screenId = 8; // any identifier for analytics purpose
+  string type = 9; // componentScreen
+  ApiUserComponentsAction userComponentsAction = 10;
+  repeated SearchScreenSection sections = 11;
+}
+

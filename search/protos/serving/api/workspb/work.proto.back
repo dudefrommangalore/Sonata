@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package workspb;
+
+import "Presto.Sonata/search/protos/serving/api/commonpb/common.proto";
+
+option go_package = "Presto.Sonata/search/protos/serving/api/workspb;workpb";
+
+
+message ApiPlayContextAction {
+  string type = 1; // set it to play-context
+  string tracksMetadataUrl = 2;
+  int32 startIndex = 3;
+  repeated commonpb.ApiPlayParams playParams = 4;
+  bool offline = 5;
+}
+
+
+message ApiTrackRef {
+  string id = 1;
+}
+
+message  WorkListItem {
+  string type = 1;
+  string composerName = 2;
+  string opusAndAltTitle = 3;
+  string recordingsNumber = 4;
+  commonpb.ApiImage image = 5;
+  bool inFavorites = 6;
+  string style = 7; // ideally I want this to be a enum. But the value here is no-image. Hence cannot do this.
+  commonpb.ApiAction action = 8;
+  ApiPlayContextAction playButtonAction = 9;
+  repeated ApiTrackRef offlineIndicatorForTracks = 10;
+}
+

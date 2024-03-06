@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package searchpb;
+
+option go_package = "Presto.Sonata/search/protos;searchpb";
+
+import "Presto.Sonata/third_party/proto/google/api/annotations.proto";
+import "Presto.Sonata/search/protos/serving/api/commonpb/component.proto";
+
+message Context {
+  string platform = 1;
+  string storefront = 2;
+}
+message SearchRequest {
+  Context context = 1;
+  string query = 2;
+
+}
+
+service SearchService {
+  rpc Search(SearchRequest) returns(componentpb.ApiSearchComponentScreen) {
+    option (google.api.http) = {
+      get: "/presto/api/v1/search"
+      additional_bindings {
+        post : "/presto/api/v1/search"
+         body : "*"
+      }
+    };
+  }
+}

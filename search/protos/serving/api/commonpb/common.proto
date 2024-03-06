@@ -1,0 +1,315 @@
+syntax = "proto3";
+
+package commonpb;
+
+option go_package = "Presto.Sonata/search/protos/serving/api/commonpb;commonpb";
+
+//message ApiImage {
+//  string url = 1;
+//  string lowresUrl = 2;
+//}
+//
+//enum ImageStyle {
+//  NO_IMAGE = 0;
+//}
+//
+//message ApiHeading {
+//  string title = 1;
+//  ApiButton button = 2;
+//  ApiTableHeadings tableHeadings = 3;
+//}
+//
+//message ApiComponentSection {
+//  string type = 1;
+//  ApiComponentPriority priority = 2;
+//  ApiHeading heading = 3;
+//  repeated ApiComponent components = 4;
+//}
+//
+//message ApiPlayAction {
+//
+//}
+//
+//message ApiTrackRef {
+//
+//}
+//
+//
+//enum ApiComponentPriority {
+//  primary = 0;
+//  secondary = 1;
+//}
+//
+//enum ApiType {
+//  list = 0;
+//  featured = 1;
+//  artist = 2;
+//  text = 3;
+//  empty = 4;
+//  downloadManagerIndicator = 5; //
+//  curatorCommentaryToggle = 6;
+//  moreText = 7;
+//  subscriptionBanner = 8;
+//  album = 9;
+//  audioQuality = 10;
+//  booklet = 11;
+//  info = 12;
+//  instrument = 13;
+//  linked = 14;
+//  plain = 15;
+//  playableListItem = 16;
+//  playlistContainer = 17;
+//  playlist = 18;
+//  recording = 19;
+//  subheading = 20;
+//  titleInput = 21; //
+//  totalDuration = 22;
+//  chevron = 23;
+//}
+//
+////  'ApiAlbumListItem',
+////  'ApiArtistListItem',
+////  'ApiAudioQuality',
+////  'ApiBookletListItem',
+////  'ApiInfoListItem',
+////  'ApiInstrumentListItem',
+////  'ApiLinkedListItem',
+////  'ApiPlainListItem',
+////  'ApiPlayableListItem',
+////  'ApiPlaylistContainerListItem',
+////  'ApiPlaylistListItem',
+////  'ApiRecordingListItem',
+////  'ApiSubheadingListItem',
+////  'ApiTextListItem',
+////  'ApiTitleInputListItem',
+////  'ApiTotalTimeListItem',
+////  'ApiTrackListItem',
+////  'ApiRecordLabelListItem',
+////  'ApiUserPlaylistListItem',
+////  'ApiWorkListItem',
+////  'ApiAppleDigitalMasterListItem',
+//message ApiListItem {
+//  ApiType type = 1;
+//  string style = 2; // search or default for ApiPlaylistListItem, trackListFootNote for ApiTextListItem
+//  string subtitle = 3;
+//  string artist = 4;
+//  string description = 5;
+//  ApiImage image = 6;
+//  RowSize rowSize = 7;
+//  bool inFavorites = 8;
+//  ApiAction action = 9; // merge ApiAction with ApiPlaylistAction
+//  string adamId = 10;
+//  string title = 11;
+//  ApiAction deleteAction = 12;
+//  string editItem = 13;
+//  string releaseDate = 14;
+//  string url = 15;
+//  string albumId = 16;
+//  ApiListItemIcon icon = 17;
+//  string disclosureText = 18;
+//  bool chevron = 19;
+//  ApiTextColor textColor = 20;
+//  ApiPlayAction playButtonAction = 21;
+//  bool isCuratorCommentarySubheading = 22;
+//  string duration = 23;
+//}
+//
+//message ApiTextColor {
+//
+//}
+//message ApiListItemIcon {
+//
+//}
+//
+//enum ApiTextStyle {
+//  copyright = 0;
+//  banner = 1;
+//}
+//
+//enum RowSize {
+//  small = 0;
+//  large = 1;
+//}
+//
+//// ApiListItem, ApiFeaturedShelfItem, ApiArtistShelfItem, ApiAlbumShelfItem, ApiPlaylistShelfItem, ApiGridItem
+//
+//message ApiComponent {
+//  ApiType type = 1;
+//  repeated ApiListItem items = 2;
+//  ApiButton editButton = 3;
+//  ApiImage image = 4;
+//  string title = 5;
+//  string paragraphs = 6;
+//  ApiTextStyle style = 7;
+//  string text = 8;
+//  int32 numberOfLines = 9;
+//
+//}
+//
+//enum ApiActionTypes {
+//  componentScreen = 0;
+//  listScreen = 1;
+//  searchScreen = 2;
+//  searchAction = 3;
+//  switchTab = 4; // convert to string switch-tab
+//  reload = 5;
+//  confirmation = 6;
+//  done = 7;
+//  deprecated = 8;
+//  redirect = 9;
+//  dismiss = 10;
+//  playContext = 11; // convert to play-context
+//  updateButton = 12; // convert to update-button
+//  userComponents = 13; // convert to user-components
+//  radioScreen = 14;
+//  command = 15;
+//  favorite = 16;
+//  createPlaylist = 17; //
+//  addToPlaylist = 18; //
+//  editPlaylist = 19; //
+//  deletePlaylist = 20; //
+//  editMixedPlaylist = 21; //
+//  confirmDelete = 22;
+//  cancel = 23;
+//  openSettings = 24; //
+//  commandError = 25; //
+//  alert = 26;
+//  renewToken = 27; //
+//  renewSubscription = 28; //
+//  contentUnavailable = 29; //
+//  appUnavailable = 30; //
+//  gdpr = 31;
+//  setExtraHeader = 32;
+//  openFilter = 33; //
+//  share = 34;
+//
+//}
+//
+//message ApiScreenType {
+//
+//}
+//
+//message ApiHeader {
+//
+//}
+//
+//message ApiSongPayload {
+//
+//}
+//
+//enum ApiActionTab {
+//  listenNow = 0;
+//  browser = 1;
+//  library = 2;
+//  search= 3;
+//}
+//
+//message ApiPlayParams {
+//  string id = 1;
+//}
+//
+//message ApiFavoriteButton {
+//
+//}
+//
+//message ApiPrompt {
+//
+//}
+//
+//message ApiCommandAction {
+//  ApiActionTypes type = 1;
+//  string url = 2;
+//  string payload = 3;
+//  ApiPrompt prompt = 4;
+//}
+//
+//message ApiFavoriteActionPayload {
+//  string entityType = 1;
+//  string id = 2;
+//  bool favorite = 3;
+//}
+//
+//message ApiFavoriteAction {
+//  ApiActionTypes type = 1;
+//  string url = 2;
+//  ApiFavoriteActionPayload payload = 3;
+//}
+//
+//message ApiPlaylistActionPayload {
+//  string playlistId = 1;
+//  string name = 2;
+//}
+//
+//message ApiPlaylistAction {
+//  ApiActionTypes type = 1;
+//  string url = 2;
+//  ApiPlaylistActionPayload payload = 3;
+//}
+//
+//message ApiUrlButton {
+//
+//}
+//
+//message ApiCancelButton{
+//
+//}
+//
+//message ApiDeleteButton{
+//
+//}
+//
+//message ApiUrlAction {
+//
+//}
+//
+//message ApiFilterField {
+//
+//}
+//
+//message ApiSetExtraHeaderAction {
+//  ApiActionTypes type = 1;
+//  string header = 2;
+//  string value = 3;
+//}
+//
+//message ApiAction {
+//  ApiActionTypes type = 1;
+//  ApiScreenType screenType = 2;
+//  string url = 3;
+//  string title = 4;
+//  ApiHeader header = 5;
+//  bool offline = 6;
+//  bool isModalPresentation = 7;
+//  ApiSongPayload payload = 8;
+//  string query = 9;
+//  string placeholder = 10;
+//  ApiActionTab tab = 11;
+//  string subtitle = 12;
+//  string icon = 13;
+//  string tracksMetadataUrl = 14;
+//  int32 startIndex = 15;
+//  ApiPlayParams playParams = 16;
+//  string subtype = 17;  // secondary-button, track-button
+//  string id = 18;
+//  ApiFavoriteButton button = 19;
+//  ApiUrlButton openUrlButton = 20;
+//  ApiCancelButton cancelButton = 21;
+//  string text = 22;
+//  ApiDeleteButton deleteButton = 23;
+//  ApiAction action = 24;
+//  string message = 25;
+//  string buttonTitle = 26;
+//  repeated ApiFilterField filters = 27;
+//}
+//
+//message ApiButton {
+//  ApiType style = 1;
+//  string title = 2;
+//  ApiAction action = 3;
+//}
+//
+//message ApiTableHeadings {
+//
+//}
+//
+//
